@@ -43,7 +43,7 @@ router.get('/account',authenticateUser, (req,res) => {
 
 router.delete('/logout',authenticateUser, (req,res) => {
     const { user, token } = req
-    User.findByIdAndDelete(user._id, { $pull: { tokens: { token: token } } })
+    User.findByIdAndUpdate(user._id, { $pull: { tokens: { token: token } } })
         .then(() => {
             res.send({ notice: 'successfully logged out' })
         })
