@@ -18,5 +18,5 @@ app.use('/categories', categoryRouter)
 
 
 app.listen(port, () => {
-    console.log('listening to the port',port)
+    console.log('Listening to the port: ',port)
 })
