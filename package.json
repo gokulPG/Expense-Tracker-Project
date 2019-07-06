@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "concurrently \"nodemon index.js\" \"npm start --prefix=client \" ",
-    "start": "node index.js"    
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "",
