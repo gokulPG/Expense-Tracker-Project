@@ -18,14 +18,16 @@ store.subscribe(() => {
 console.log(store.getState())
 
 //user reloaded page
-axios.get('http://localhost:3005/account', {
-    headers:{
-        'x-auth':localStorage.getItem('userAuthToken')
-    }
-})
-.then(response => {
-    store.dispatch(setUser(response.data))
-})
+if(localStorage.getItem('userAuthToken')){
+    axios.get('http://localhost:3005/account', {
+        headers:{
+            'x-auth':localStorage.getItem('userAuthToken')
+        }
+    })
+    .then(response => {
+        store.dispatch(setUser(response.data))
+    })
+}
 
 const provider = (
     <Provider store={store}>
