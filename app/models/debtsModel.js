@@ -20,6 +20,9 @@ const DebtsSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'User'
 
+    },
+    new1:{
+      type:String
     }
 })
 
