@@ -10,6 +10,7 @@ import Logout from './components/logout'
 
 import New from './components/transaction/new'
 import Home from './components/transaction/home'
+import Show from  './components/transaction/show'
 
 class App extends React.Component{
     render(){
@@ -33,9 +34,10 @@ class App extends React.Component{
                         <Route path="/users/account" component={Account} exact={true} />
                         <Route path="/users/logout" component={Logout} />
                         <Route path="/users/register" component={Register} exact={true} />
-                        <Route path="/users/login" component={Login} />
-                        <Route path="/home" component={Home}/>
-                        <Route path="/new" component={New}/>
+                        <Route path="/users/login" component={Login} exact={true}/>
+                        <Route path="/home" component={Home} exact={true}/>
+                        <Route path="/new" component={New} />
+                        <Route path="/show/:id" component={Show} />
                 </Switch>
             </div>
         </BrowserRouter>

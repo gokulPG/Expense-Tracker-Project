@@ -26,7 +26,7 @@ router.get('/:id', authenticateUser, (req,res) =>{
         _id : id,
         user : user._id,
         // date: result
-    }).populate('Category', ['name']).populate('Event', ['name'])
+    }).populate('category')
     .then(transaction =>{
         if(!transaction){
             res.send({})

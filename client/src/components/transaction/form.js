@@ -50,7 +50,7 @@ class TransactionForm extends React.Component{
         
 
         this.setState({ date })
-        console.log(date.getDate())
+        console.log(date.getDate()+1)
         console.log(date.getMonth()+1)
         // console.log(date.getYear())
 
@@ -112,7 +112,7 @@ class TransactionForm extends React.Component{
                         </select>
                     </label><br/><br/>
                     <label>
-                        <Calendar onChange={this.onChange} value={this.state.date} name="date">
+                        <Calendar onChange={this.onChange} value={this.state.date}>
                             
                         </Calendar>
 
