@@ -8,6 +8,8 @@ const {mongoose} = require('./config/database')
 const {userRouter} = require('./app/controllers/userController')
 const {transactionRouter} = require('./app/controllers/transactionController')
 const {categoryRouter} = require('./app/controllers/categoryController')
+const {budgetRouter} = require('./app/controllers/budgetController')
+const {eventRouter} = require('./app/controllers/eventController')
 
 app.use(express.json())
 app.use(cors())
@@ -15,6 +17,8 @@ app.use(cors())
 app.use('/', userRouter)
 app.use('/transactions', transactionRouter)
 app.use('/categories', categoryRouter)
+app.use('/budget', budgetRouter)
+app.use('/event', eventRouter)
 
 
 app.listen(port, () => {
