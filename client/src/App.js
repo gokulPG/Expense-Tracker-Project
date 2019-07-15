@@ -8,6 +8,9 @@ import Login from './components/login'
 import Account from './components/account'
 import Logout from './components/logout'
 
+import New from './components/transaction/new'
+import Home from './components/transaction/home'
+
 class App extends React.Component{
     render(){
         return(
@@ -17,6 +20,7 @@ class App extends React.Component{
                     {!_.isEmpty(localStorage.getItem('userAuthToken')) ?
                     (<div>
                         <li><Link to="/users/account">Account</Link></li>
+                        <li><Link to="/home">Home</Link></li>
                         <li><Link to="/users/logout">Logout</Link></li>
                     </div>
                     ):(<div>
@@ -29,7 +33,9 @@ class App extends React.Component{
                         <Route path="/users/account" component={Account} exact={true} />
                         <Route path="/users/logout" component={Logout} />
                         <Route path="/users/register" component={Register} exact={true} />
-                        <Route exact path="/users/login" component={Login} />
+                        <Route path="/users/login" component={Login} />
+                        <Route path="/home" component={Home}/>
+                        <Route path="/new" component={New}/>
                 </Switch>
             </div>
         </BrowserRouter>

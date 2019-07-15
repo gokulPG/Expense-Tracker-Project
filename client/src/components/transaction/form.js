@@ -11,7 +11,13 @@ class TransactionForm extends React.Component{
             events:'',
             isEvent: false,
             category:'',
-            categories:[],
+            categories1:[
+                {Name:"Food"},
+                {Name:"Clothes"}
+            ],
+            categories2:[
+                {Name:"Drinks"}
+            ],
             date:new Date()
 
         }
@@ -44,19 +50,21 @@ class TransactionForm extends React.Component{
         this.props.handleSubmit(formData)
     }
 
-    componentDidMount() {
-        axios.get(`http://localhost:3005/categories`)
-        .then(response => {
-            this.setState(() => ({
-                categories : response.data
-            }))
-        })
-    }
+    // componentDidMount() {
+    //     axios.get(`http://localhost:3005/categories`)
+    //     .then(response => {
+    //         this.setState(() => ({
+    //             categories : response.data
+    //         }))
+    //     })
+    // }
 
     render(){
         return(
             <div>
                 <form onSubmit={this.handleSubmit}>
+                    <button onClick={}>Expense</button>
+                    <button onClick={}>Income</button>
                     <label>
                         Cash/Amount
                         <input type="text" value={this.state.amount} name="Amount" onChange={this.handleChange} />
@@ -77,8 +85,9 @@ class TransactionForm extends React.Component{
                     <label>
                         Category
                         <select value={this.state.category} onChange={this.handleChange} name="category">
+                            
                             <option value="">select</option>
-                            {this.state.categories.map(category =>{
+                            {this.state.categories1.map(category =>{
                                 return <option key={category._id} value={category._id}>{category.name}</option>
                             })}
 

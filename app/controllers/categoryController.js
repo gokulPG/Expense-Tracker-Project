@@ -15,20 +15,20 @@ router.get('/', authenticateUser, (req,res) => {
 })
 
 
-router.get('/:id', authenticateUser, (req,res) =>{
-    const id = req.params.id
-    const {user} = req
-    Category.findOne({
-        _id:id,
-        user:user._id
-    })
-    .then(category => {
-        res.json(category)
-    })
-    .catch(err =>{
-        res.json(err)
-    })
-})
+// router.get('/:id', authenticateUser, (req,res) =>{
+//     const id = req.params.id
+//     const {user} = req
+//     Category.findOne({
+//         _id:id,
+//         user:user._id
+//     })
+//     .then(category => {
+//         res.json(category)
+//     })
+//     .catch(err =>{
+//         res.json(err)
+//     })
+// })
 
 
 router.post('/', authenticateUser, (req,res) =>{
@@ -49,7 +49,7 @@ router.post('/', authenticateUser, (req,res) =>{
 })
 
 
-router.delete('/:id', authenticateUser, (req,res) =>{
+router.delete('/:id', (req,res) =>{
     const id = req.params.id
     const {user} = req
     Category.findByIdAndDelete({
