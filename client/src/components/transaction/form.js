@@ -11,14 +11,8 @@ class TransactionForm extends React.Component{
             events:'',
             isEvent: false,
             category:'',
-            categories1:[
-                {Name:"Food"},
-                {Name:"Clothes"}
-            ],
-            categories2:[
-                {Name:"Drinks"}
-            ],
-            date:new Date()
+            categories:[],
+            date:''
 
         }
 
@@ -29,6 +23,9 @@ class TransactionForm extends React.Component{
         this.setState(() =>({
             [e.target.name]: e.target.value
         }))
+    }
+    onChange = (date) => {
+        this.setState({date})
     }
 
     handleTagChange = (e) =>{
@@ -50,24 +47,23 @@ class TransactionForm extends React.Component{
         this.props.handleSubmit(formData)
     }
 
-    // componentDidMount() {
-    //     axios.get(`http://localhost:3005/categories`)
-    //     .then(response => {
-    //         this.setState(() => ({
-    //             categories : response.data
-    //         }))
-    //     })
-    // }
+    componentDidMount() {
+        axios.get(`http://localhost:3005/categories`)
+        .then(response => {
+            this.setState(() => ({
+                categories : response.data
+            }))
+        })
+    }
 
     render(){
         return(
             <div>
                 <form onSubmit={this.handleSubmit}>
-                    <button onClick={}>Expense</button>
-                    <button onClick={}>Income</button>
+                    
                     <label>
                         Cash/Amount
-                        <input type="text" value={this.state.amount} name="Amount" onChange={this.handleChange} />
+                        <input type="text" value={this.state.amount} name="amount" onChange={this.handleChange} />
                     </label><br/><br/>
                     <label>
                         Description
@@ -87,14 +83,14 @@ class TransactionForm extends React.Component{
                         <select value={this.state.category} onChange={this.handleChange} name="category">
                             
                             <option value="">select</option>
-                            {this.state.categories1.map(category =>{
+                            {this.state.categories.map(category =>{
                                 return <option key={category._id} value={category._id}>{category.name}</option>
                             })}
 
                         </select>
                     </label><br/><br/>
                     <label>
-                        <Calendar onChange={this.handleDateChange} value={this.state.date}>
+                        <Calendar onChange={this.onChange} value={this.state.date}>
                             
                         </Calendar>
 
