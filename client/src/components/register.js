@@ -1,7 +1,10 @@
 import React from 'react'
 import axios from 'axios'
 
+
+
 class Register extends React.Component{
+
     constructor(props){
         super(props)
         this.state = {
@@ -37,19 +40,23 @@ class Register extends React.Component{
             })  
     }
 
+   
+
 
     render(){
         return(
             <div>
+                
                 <h3>REGISTER</h3>
                 <form onSubmit={this.handleSubmit}>
                     <label>
                         username:
-                        <input type="text" name="username" value={this.state.username} onChange={this.handleChange}/>
+                        <input type="text" name="username" value={this.state.username} onChange={this.handleChange} />
                     </label><br/>
                     <label>
                         email:
-                        <input type="email" name="email" value={this.state.email} onChange={this.handleChange}/>
+                        
+                        <input type="email" name="email" value={this.state.email} onChange={this.handleChange} />
                     </label><br/>
                     <label>
                         password:
@@ -58,10 +65,16 @@ class Register extends React.Component{
 
                     <input type="submit" value="submit" />
                 </form>
+            
             </div>
         )
     }
 
 }
+
+
+
+
+  
 
 export default Register

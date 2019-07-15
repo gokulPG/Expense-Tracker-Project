@@ -18,6 +18,16 @@ const TransactionSchema = new Schema({
         ref:'Category'
 
     },
+    event:{
+        type:Schema.Types.ObjectId,
+        ref: 'Event'
+
+    },
+    isEvent:{
+        type:Boolean,
+        default:false
+
+    },
     date:{
         type:Date,
         default:Date.now()

@@ -29,3 +29,5 @@ class TransactionNew extends React.Component{
         )
     }
 }
+
+export default TransactionNew
