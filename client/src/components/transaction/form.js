@@ -11,14 +11,15 @@ class TransactionForm extends React.Component{
             events:'',
             isEvent: false,
             category:'',
-            categories1:[
-                {Name:"Food"},
-                {Name:"Clothes"}
-            ],
-            categories2:[
-                {Name:"Drinks"}
-            ],
-            date:new Date()
+            categories:[],
+            // categories1:[
+            //     {Name:"Food"},
+            //     {Name:"Clothes"}
+            // ],
+            // categories2:[
+            //     {Name:"Drinks"}
+            // ],
+            date:''
 
         }
 
@@ -32,11 +33,29 @@ class TransactionForm extends React.Component{
     }
 
     handleTagChange = (e) =>{
-        const isEvent = e.target.checked
-        this.setState((prevState) => ({
-               isEvent: prevState.isEvent
-        }))
+        // const isEvent = e.target.checked
+        if(e.target.checked){
+            this.setState((prevState) => ({
+                isEvent: !prevState.isEvent
+         }))
+
+        }
+        
     }
+
+   
+
+    onChange = (date) => {
+   
+        
+
+        this.setState({ date })
+        console.log(date.getDate())
+        console.log(date.getMonth()+1)
+        // console.log(date.getYear())
+
+    }
+    
 
     handleSubmit = (e) => {
         e.preventDefault()
@@ -50,24 +69,23 @@ class TransactionForm extends React.Component{
         this.props.handleSubmit(formData)
     }
 
-    // componentDidMount() {
-    //     axios.get(`http://localhost:3005/categories`)
-    //     .then(response => {
-    //         this.setState(() => ({
-    //             categories : response.data
-    //         }))
-    //     })
-    // }
+    componentDidMount() {
+        axios.get(`http://localhost:3005/categories`)
+        .then(response => {
+            this.setState(() => ({
+                categories : response.data
+            }))
+        })
+    }
 
     render(){
         return(
             <div>
                 <form onSubmit={this.handleSubmit}>
-                    <button onClick={}>Expense</button>
-                    <button onClick={}>Income</button>
+                    
                     <label>
                         Cash/Amount
-                        <input type="text" value={this.state.amount} name="Amount" onChange={this.handleChange} />
+                        <input type="text" value={this.state.amount} name="amount" onChange={this.handleChange} />
                     </label><br/><br/>
                     <label>
                         Description
@@ -87,14 +105,14 @@ class TransactionForm extends React.Component{
                         <select value={this.state.category} onChange={this.handleChange} name="category">
                             
                             <option value="">select</option>
-                            {this.state.categories1.map(category =>{
+                            {this.state.categories.map(category =>{
                                 return <option key={category._id} value={category._id}>{category.name}</option>
                             })}
 
                         </select>
                     </label><br/><br/>
                     <label>
-                        <Calendar onChange={this.handleDateChange} value={this.state.date}>
+                        <Calendar onChange={this.onChange} value={this.state.date} name="date">
                             
                         </Calendar>
 

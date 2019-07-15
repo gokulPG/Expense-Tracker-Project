@@ -5,7 +5,8 @@ import TransactionFrom from './form'
 class TransactionNew extends React.Component{
     
     handleSubmit = (formData) => {
-        axios.post('http://localhost:3005/show', formData,{
+        console.log(formData)
+        axios.post('http://localhost:3005/transactions', formData,{
             headers:{
                 'x-auth': localStorage.getItem('userAuthToken')
             }
