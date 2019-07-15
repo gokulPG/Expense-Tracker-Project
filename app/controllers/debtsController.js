@@ -3,7 +3,6 @@ const router = express.Router()
 const {authenticateUser} = require('../middlewares/authentication')
 const {Debts} = require('../models/debtsModel')
 
-const n
 
 
 router.get('/', authenticateUser, (req,res) => {

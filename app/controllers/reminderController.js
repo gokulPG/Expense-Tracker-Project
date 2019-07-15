@@ -3,7 +3,6 @@ const router = express.Router()
 const {authenticateUser} = require('../middlewares/authentication')
 const {Reminder} = require('../models/reminderModel')
 
-const nn
 
 router.get('/', authenticateUser, (req,res) =>{
     const {user} = req
