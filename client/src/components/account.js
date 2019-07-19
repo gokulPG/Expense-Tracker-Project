@@ -23,10 +23,18 @@ class Account extends React.Component{
         return(
             <div>
                 <h2>Account Details</h2>
-                <ul>
-                    <li><h4>{this.props.user.username}</h4></li>
-                    <li>email: {this.props.user.email}</li>
-                </ul>
+                <hr></hr>
+                <div className="card" style={{width:"500px"}}>
+                    <div className="card-body">
+                        <h4 id="center" className="card-title">
+                            <div>
+                                Username: {this.props.user.username}<br/>
+                                <hr></hr>
+                                Email: {this.props.user.email}
+                            </div>
+                        </h4>
+                    </div>
+               </div>
             </div>
         )
     }

@@ -23,8 +23,9 @@ router.get('/:id', authenticateUser, (req,res) => {
     Event.findOne({
         _id: id,
         user: user._id
-    }).populate('Transaction')
-        .then(event =>{
+    })
+    // .populate('Transaction')
+    .then(event =>{
             if(!event)   {
                 res.send({})
             }
@@ -39,7 +40,7 @@ router.post('/', authenticateUser, (req,res) => {
     const {user} = req
     const body = req.body
     const event = new Event(body)
-    event.user = user.user._id
+    event.user = user._id
     event.save()
         .then(event => {
             res.send(event)

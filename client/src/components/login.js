@@ -33,6 +33,7 @@ const SignupSchema = Yup.object().shape({
             return(
                 <div>
                     <h1>LOGIN</h1>
+                    <hr></hr>
              <Formik
                     initialValues={{
                         email: '',
@@ -42,14 +43,17 @@ const SignupSchema = Yup.object().shape({
                     onSubmit={this.handleSubmit}
                     >
                     {({ errors, touched}) => (
-                        <Form>
-                                email:
-                                <Field name="email" type="email" />
-                                {errors.email && touched.email ? <div>{errors.email}</div> : null}<br/>
-                                password:
-                                <Field name="password" type="password" />
-                                {errors.password && touched.password ? <div>{errors.password}</div> : null}<br/>
-
+                        <Form>  
+                                <div className="form-group">
+                                    email:
+                                    <Field name="email" type="email" className="form-control" placeholder="abc@gmail.com"/>
+                                    {errors.email && touched.email ? <div>{errors.email}</div> : null}
+                                </div><br/>
+                                <div className="form-group">
+                                    password:
+                                    <Field name="password" type="password" className="form-control" placeholder="******"/>
+                                    {errors.password && touched.password ? <div>{errors.password}</div> : null}
+                                </div><br/>
                                 <button type="submit">Submit</button>
                         </Form>
                     )}

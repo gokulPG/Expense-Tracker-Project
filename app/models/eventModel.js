@@ -10,10 +10,10 @@ const EventSchema = new Schema({
     days:{
         type: Number
     },
-    transaction:{
-        type: Schema.Types.ObjectId,
-        ref: 'Transaction'
-    },
+    // transaction:{
+    //     type: Schema.Types.ObjectId,
+    //     ref: 'Transaction'
+    // },
     date:{
         type:Date,
         default:Date.now()

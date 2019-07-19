@@ -33,7 +33,9 @@ const SignupSchema = Yup.object().shape({
         render(){
             return (
                 <div>
+                    
                      <h1>REGISTER</h1>
+                     <hr></hr>
                      <Formik
                             initialValues={{
                                 username: '',
@@ -45,18 +47,23 @@ const SignupSchema = Yup.object().shape({
                             >     
                             {({ errors, touched}) => (
                                 <Form>
-                                        username:
-                                        <Field name="username" placeholder="Enter your username" />
-                                        {errors.username && touched.username ? (
-                                            <div>{errors.username}</div>
-                                        ) : null}<br/>
-                                        email:
-                                        <Field name="email" type="email" placeholder="abc@gmail.com" />
-                                        {errors.email && touched.email ? <div>{errors.email}</div> : null}<br/>
-                                        password:
-                                        <Field name="password" type="password" placeholder="******" />
-                                        {errors.password && touched.password ? <div>{errors.password}</div> : null}<br/>
-        
+                                       <div className="form-group">
+                                                username:
+                                                <Field name="username" placeholder="Enter your username" className="form-control" />
+                                                {errors.username && touched.username ? (
+                                                    <div>{errors.username}</div>
+                                                ) : null}
+                                        </div><br/>
+                                        <div className="form-group">
+                                                email:
+                                                <Field name="email" type="email" placeholder="abc@gmail.com" className="form-control" />
+                                                {errors.email && touched.email ? <div>{errors.email}</div> : null}
+                                        </div><br/>
+                                        <div className="form-group">
+                                                password:
+                                                <Field name="password" type="password" placeholder="******" className="form-control" />
+                                                {errors.password && touched.password ? <div>{errors.password}</div> : null}
+                                        </div><br/>
                                         <button type="submit">Submit</button>
                                 </Form>
                             )}

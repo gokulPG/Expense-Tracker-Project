@@ -1,9 +1,11 @@
 const express = require('express')
 const router = express.Router()
 
+
 const {Category} = require('../models/categoryModel')
 
-router.get('/', (req,res) => { 
+router.get('/',(req,res) => {
+ 
     Category.find()
         .then(category =>{
             res.json(category)
@@ -30,11 +32,11 @@ router.get('/', (req,res) => {
 // })
 
 
-router.post('/',  (req,res) =>{
+router.post('/',(req,res) =>{
     const body = req.body
-
+  
     const category = new Category(body)
-    
+  
     category.save()
        .then(category =>{
            if(!category){
@@ -50,11 +52,8 @@ router.post('/',  (req,res) =>{
 
 router.delete('/:id', (req,res) =>{
     const id = req.params.id
-   
-    Category.findByIdAndDelete({
-        _id:id
-        
-    })
+    
+    Category.findByIdAndDelete({_id:id})
     .then(category => {
         if(!category){
             res.json({})

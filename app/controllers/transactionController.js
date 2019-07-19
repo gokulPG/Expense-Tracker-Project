@@ -17,6 +17,7 @@ router.get('/', authenticateUser, (req,res) => {
       })
 })
 
+
 router.get('/:id', authenticateUser, (req,res) =>{
     const id = req.params.id
     const {user} = req
@@ -26,7 +27,7 @@ router.get('/:id', authenticateUser, (req,res) =>{
         _id : id,
         user : user._id,
         // date: result
-    }).populate('Category', ['name']).populate('Event', ['name'])
+    }).populate('category')
     .then(transaction =>{
         if(!transaction){
             res.send({})
@@ -52,6 +53,7 @@ router.post('/', authenticateUser, (req,res) =>{
     })
 
 })
+
 
 router.delete('/:id', authenticateUser, (req,res) =>{
     const {user} = req

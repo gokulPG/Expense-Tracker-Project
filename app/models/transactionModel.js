@@ -5,9 +5,7 @@ const Schema = mongoose.Schema
 
 const TransactionSchema = new Schema({
     amount:{
-        type: Number,
-        required: true,
-
+        type: Number
     },
     description:{
         type: String

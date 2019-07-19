@@ -12,6 +12,7 @@ const {budgetRouter} = require('./app/controllers/budgetController')
 const {eventRouter} = require('./app/controllers/eventController')
 const {reminderRouter} = require('./app/controllers/reminderController')
 const {debtsRouter} = require('./app/controllers/debtsController')
+const {formRouter} = require('./app/controllers/formController')
 
 app.use(express.json())
 app.use(cors())
@@ -23,6 +24,7 @@ app.use('/budget', budgetRouter)
 app.use('/event', eventRouter)
 app.use('/reminder', reminderRouter)
 app.use('/debts', debtsRouter)
+app.use('/stats', formRouter)
 
 
 app.listen(port, () => {

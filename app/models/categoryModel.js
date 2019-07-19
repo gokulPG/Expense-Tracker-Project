@@ -6,8 +6,6 @@ const CategorySchema = new Schema({
     name:{
         type:String,
         required:true
-        
-
     },
     isExpense:{
         type:Boolean,
@@ -17,13 +15,7 @@ const CategorySchema = new Schema({
         type:Date,
         default: Date.now()
 
-    },
-    user:{
-        type:Schema.Types.ObjectId,
-        ref: 'User'
-    }
-
-})
+    }})
 
 const Category = mongoose.model('Category', CategorySchema)
 

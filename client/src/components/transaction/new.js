@@ -5,20 +5,19 @@ import TransactionFrom from './form'
 class TransactionNew extends React.Component{
     
     handleSubmit = (formData) => {
+        
         axios.post('http://localhost:3005/transactions', formData,{
             headers:{
                 'x-auth': localStorage.getItem('userAuthToken')
             }
         })
         .then(response => {
-            if(response.data.hasOwnProperty('errors')){
-                console.log(response.data.errors)
-            }
-            else{
-
-               this.props.history.push(`/show/${response.data._id}`)
-    
-            }
+                if(response.data.hasOwnProperty('errors')){
+                    console.log(response.data.errors)
+                }
+                else{
+                    this.props.handleExpense(formData)   
+                }
         })
     }
 
