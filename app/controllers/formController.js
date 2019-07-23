@@ -1,5 +1,6 @@
 const express = require('express')
 const {Transaction} = require('../models/transactionModel')
+const {Budget} =  require('../models/budgetModel')
 const {authenticateUser} = require('../middlewares/authentication')
 const router = express.Router()
 
@@ -33,6 +34,47 @@ router.get('/', authenticateUser, (req,res) => {
       })
 })
 
+router.get('/result', authenticateUser, (req,res) => {
+    const {user} = req
+    
+    Budget.find({
+        user: user._id
+    })
+    .then(budgets => {
+            var arr = []
+           
+            budgets.forEach(function(budget){
+            Transaction.find({
+                user:user._id,
+                isExpense: true,
+                category: budget.category
+            })
+            .then(transactions => {
+
+                var expense = 0
+                transactions.forEach(function(transaction){
+                    expense = expense+ transaction.amount
+                })
+                var formData = {
+                    category: budget.category,
+                    amount: budget.amount,
+                    expense: expense,
+                    spent: budget.amount - expense
+                }
+                arr.push(formData) 
+                console.log(arr)
+            })
+            
+            // res.json(arr)
+        })
+       
+        
+    })
+    .catch(err =>{
+        res.send(err)
+    })
+
+})
 
 
 

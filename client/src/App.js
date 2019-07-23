@@ -13,6 +13,8 @@ import New from './components/transaction/new'
 import Home from './components/transaction/home'
 import Show from  './components/transaction/show'
 
+import BudgetNew from './components/budget/budgetNew'
+import BudgetList from './components/budget/budgetList'
 
 class App extends React.Component{
     render(){
@@ -28,7 +30,8 @@ class App extends React.Component{
                 <div className="container">
                     <div className="row">
                         <div className="col-md-10">
-                            <h3>Welcome back!</h3>
+                            <h3>Welcome back!</h3><br/> 
+                            <Link to="/users/budgetList">Budget</Link>
                     </div>
                     <div className="col-md-2" >
                         <ul>
@@ -56,6 +59,8 @@ class App extends React.Component{
                         <Route path="/users/home" component={Home} exact={true}/>
                         <Route path="/users/new" component={New} />
                         <Route path="/users/show/:id" component={Show} />
+                        <Route path="/users/budgetNew" component={BudgetNew} exact={true} />
+                        <Route path="/users/budgetList" component={BudgetList} />
                 </Switch>
                 </div>
             </div>

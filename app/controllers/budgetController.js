@@ -20,7 +20,7 @@ router.post('/', authenticateUser, (req,res) => {
     const {user} = req
     const body = req.body
     const budget = new Budget(body)
-    budget.user = user.user._id
+    budget.user = user._id
     budget.save()
         .then(Budget => {
             res.send(Budget)
@@ -33,7 +33,7 @@ router.post('/', authenticateUser, (req,res) => {
 router.delete('/:id', authenticateUser, (req,res) =>{
     const {user} = req
     const id = req.params.id
-    Budget.findByIdAndDelete({
+    Budget.findOneAndDelete({
         _id:id,
         user:user._id
     })

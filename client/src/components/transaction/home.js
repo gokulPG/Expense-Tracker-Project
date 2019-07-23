@@ -1,6 +1,8 @@
 import React from 'react'
 import TransactionNew from './new'
 import TransactionList from './list'
+import BudgetNew from '../budget/budgetNew'
+import BudgetList from '../budget/budgetList'
 
 import axios from 'axios';
 class Home extends React.Component{
@@ -10,7 +12,7 @@ class Home extends React.Component{
             income:0,
             expense:0,
             balance:0,
-            isClick:false,
+            isClick:false
         }
     }
 
@@ -32,11 +34,13 @@ class Home extends React.Component{
             this.setState(() => ({
                 income,
                 expense,
-                balance
+                balance,
+                isCategoryRecieved:false
             }))
         })
      }       
 }
+
 
     handleExpense = (data) => {
        axios.get('http://localhost:3005/stats',{
@@ -101,7 +105,7 @@ class Home extends React.Component{
                 <h2><ul>Transactions Overview</ul></h2>
                 <hr></hr>
                 {!this.state.isClick && <TransactionList handleExpense={this.handleExpense} />}
-                {/* <Link to='/new'>new</Link> */}
+
             </div>
         )
     }
