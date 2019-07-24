@@ -12,7 +12,7 @@ class BudgetList extends React.Component{
     }
 
     componentDidMount(){
-        axios.get('http://localhost:3005/stats/result',{
+        axios.get('http://localhost:3005/stats/budget',{
             headers:{
                 'x-auth': localStorage.getItem('userAuthToken')
             }
@@ -46,13 +46,25 @@ class BudgetList extends React.Component{
     render(){
         return(
             <div id="center">
-                <ul>
+                <div className="nav nav-pills nav-stacked anyClass">
                     {
                         this.state.budgets.map((budget) => {
-                            return <li key={budget._id}>{budget.category}-{budget.amount}<button onClick={()=>{this.handleDelete(budget)}}>X</button></li>
-                        })
+                            // return <li key={budget._id}>{budget.category}-{budget.amount}<button onClick={()=>{this.handleDelete(budget)}}>X</button></li>
+                            // <div className="card" style={{width:"500px"}}>
+                            //         <div className="card-body">
+                            //             <h4 id="center" className="card-title">
+                            //                 <div>
+                            //                     category:{budget.category}
+                            //                     amount:{budget.amount}
+                            //                     expense:{budget.expense}
+                            //                     spent:{budget.spent}
+                            //                 </div>
+                            //             </h4>
+                            //         </div>
+                            //  </div>
+                            })
                     }
-                </ul>
+                </div>    
                 <Link to='/users/budgetNew'>Add budget</Link><br/>
                 <Link to='/users/home'>Back</Link>
                 

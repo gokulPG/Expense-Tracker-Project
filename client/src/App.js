@@ -17,11 +17,17 @@ import BudgetNew from './components/budget/budgetNew'
 import BudgetList from './components/budget/budgetList'
 
 class App extends React.Component{
+    // constructor(props){
+    //     super(props)
+    //     this.state = {
+    //         isToken: false
+    //     }
+    // }
     render(){
         return(
         <BrowserRouter>
             <div>
-                <div className="container">
+                <div className=" idea container">
                     <div className="d-flex justify-content-center">
                         <h2><ul>EXPENSE-TRACKER</ul></h2>
                     </div>
@@ -52,11 +58,12 @@ class App extends React.Component{
                 <hr></hr>
                 <div className="d-flex justify-content-center">           
                 <Switch>
-                        <Route path="/users/account" component={Account} exact={true} />
-                        <Route path="/users/logout" component={Logout} />
+                              
+                        <Route path="/users/account" component={Account} exact={true}/>
+                        <Route path="/users/logout" component={Logout} exact={true} />
+                        <Route path="/users/home" component={Home} exact={true}/> 
                         <Route path="/users/register" component={Register} exact={true} />
                         <Route path="/users/login" component={Login} exact={true}/>
-                        <Route path="/users/home" component={Home} exact={true}/>
                         <Route path="/users/new" component={New} />
                         <Route path="/users/show/:id" component={Show} />
                         <Route path="/users/budgetNew" component={BudgetNew} exact={true} />

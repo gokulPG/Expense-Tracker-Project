@@ -8,7 +8,7 @@ router.get('/', authenticateUser, (req,res) => {
     Transaction.find({
         user:user._id,
 
-    })
+    }).populate('category',['name'])
       .then(transaction =>{
           res.send(transaction)
       })
@@ -27,7 +27,7 @@ router.get('/:id', authenticateUser, (req,res) =>{
         _id : id,
         user : user._id,
         // date: result
-    }).populate('category')
+    }).populate('category',['name'])
     .then(transaction =>{
         if(!transaction){
             res.send({})

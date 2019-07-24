@@ -149,7 +149,7 @@ class TransactionForm extends React.Component{
                     </div>
 
                     <input type="submit"/>
-                    <Link to='/users/account'>Back</Link>
+                    <Link to='/users/account'><button>Back</button></Link>
                     <hr></hr>
                 </form>
 

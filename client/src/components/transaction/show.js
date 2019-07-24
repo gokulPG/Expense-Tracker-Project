@@ -1,13 +1,7 @@
 import React from 'react'
 import axios from 'axios'
-// import {Link} from 'react-router-dom'
-import {
-    Button,
-    Modal,
-    ModalHeader,
-    ModalBody,
-    ModalFooter
-  } from "reactstrap"
+import Popup from 'reactjs-popup'
+import Moment from 'react-moment'
 
 class TransactionShow extends React.Component{
     constructor(props){
@@ -40,26 +34,37 @@ class TransactionShow extends React.Component{
         console.log(this.props)
         return(
             <div>
-                 <Modal
-                  isOpen={this.props.modal}
-                  toggle={this.props.toggle}>
-                    <ModalHeader toggle={this.props.toggle}>Transaction Details</ModalHeader>
-                    <ModalBody>
-                        <div>
-                            <h3>{this.state.trans.amount} </h3>
-                            <h3>{this.state.trans.description}</h3>
-                            <h3>{this.state.trans.category && this.state.trans.category.name}</h3>
-                            <h3>{this.state.trans.date}</h3>
+                {/* <Popup trigger={<button>Open modal</button>} modal> */}
+                        {close => (
+                        <div className="header">
+                            
+                            <div className="header"> Transaction details</div>
+                            <div className="content">
+                            {""}
+                                {
+                                    <ul>
+                                        <li>{this.props.item.description}</li>
+                                        <li>{this.props.item.amount}</li>
+                                        <li>{this.props.item.isExpense ? 'Expense': 'Income'}</li>
+                                        <li>{this.props.item.category && this.props.item.category.name}</li>
+                                        <li><Moment>{this.props.item.date}</Moment></li>
+                                    </ul>
+                                }
+                            </div>
+                            <div className="actions">
+                            <button
+                                className="button"
+                                onClick={() => {
+                                console.log("modal closed ");
+                                close();
+                                }}
+                            >
+                                close modal
+                            </button>
+                            </div>
                         </div>
-                    </ModalBody>
-                    <ModalFooter>
-                        <Button color="primary" onClick={this.props.toggle}>
-                        Cancel
-                        </Button>
-                    </ModalFooter>
-                </Modal>   
-                {/* <Link to="/users/home">Back</Link> */}
-                
+                        )}
+                    {/* </Popup> */}
             </div>
         )
     }

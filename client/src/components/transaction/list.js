@@ -3,24 +3,28 @@ import axios from 'axios'
 import { Table } from 'reactstrap'
 import {Link} from 'react-router-dom'
 import TransactionShow from './show'
+import Moment from 'react-moment'
+import Popup from 'reactjs-popup'
+
 
 class TransactionList extends React.Component{
     constructor(props){
         super(props)
         this.state = {
             transactions:[],
-            modal:false,
-            id: ''
+            isItem:false,
+            item: '',
+            month:''
         }
         this.handleDelete = this.handleDelete.bind(this)
-        this.toggle = this.toggle.bind(this);
+        this.handleDescription = this.handleDescription.bind(this);
     }
     
-    toggle(id) {
-        this.setState(prevState => ({
-          modal: !prevState.modal,
-          id: id 
-        }));
+    handleDescription(item) {
+        this.setState(() => ({
+            isItem: true,
+            item: item
+        }))
       }
 
     componentDidMount(){
@@ -31,8 +35,13 @@ class TransactionList extends React.Component{
         })
         .then(response => {
             // console.log('list '+response.data)
+            var Xmas95 = new Date()
+            var options = { month: 'long'}
+            var month = new Intl.DateTimeFormat('en-US', options).format(Xmas95);
+
             this.setState(() => ({
-                transactions: response.data
+                transactions: response.data,
+                month: month
             }))
         })
       }
@@ -57,25 +66,68 @@ class TransactionList extends React.Component{
 
     render(){
         return(
-            <div id="center" >
-                    {this.state.modal && <TransactionShow id={this.state.id}  toggle={this.toggle} modal={this.state.modal} /> }
+
+            <div className="card centre nav nav-pills nav-stacked anyClass">
+                    {this.state.isItem && <TransactionShow item={this.state.item}/>}
+
                     <div>
-                    <Table className="nav nav-pills nav-stacked anyClass">
+                    <Table className="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Month</th>
+                            <th>Title</th>
+                            <th>Amount</th>
+                            <th>Date/Timings</th>
+                        </tr>
+                    </thead>
                         <tbody>
-                                {this.state.transactions.length > 0 && this.state.transactions.map(item => {
+                                {this.state.transactions.length > 0 && this.state.transactions.map((item,index) => {
                                     return (
                                         <tr key={item._id}>
-                                            <th scope="row"> {item._id}</th> 
+                                            <th scope="row">{index}</th>
+                                            <td>{this.state.month}</td> 
                                             <td>
                                                 <Link onClick={() => {
-                                                    this.toggle(item._id)
+                                                    this.handleDescription(item)
                                                 }}>
-                                                    {item.description}
+                                                     <Popup trigger={<Link>{item.description}</Link>} modal>
+                                                     {close => (
+                                                            <div className="header">
+                                                                
+                                                                <div className="header"> Transaction details</div>
+                                                                <div className="content">
+                                                                {""}
+                                                                    {
+                                                                        <ul>
+                                                                            <li>{item.description}</li>
+                                                                            <li>{item.amount}</li>
+                                                                            <li>{item.isExpense ? 'Expense': 'Income'}</li>
+                                                                            <li>{item.category && item.category.name}</li>
+                                                                            <li><Moment>{item.date}</Moment></li>
+                                                                        </ul>
+                                                                    }
+                                                                </div>
+                                                                <div className="actions">
+                                                                <button
+                                                                    className="button"
+                                                                    onClick={() => {
+                                                                    console.log("modal closed ");
+                                                                    close();
+                                                                    }}
+                                                                >
+                                                                    close modal
+                                                                </button>
+                                                                </div>
+                                                            </div>
+                                                            )}
+                                                     </Popup>
+                                                    
                                                 </Link>
                                                
                                             </td>
                                             <td>{item.amount}/-</td>
-                                            <td>{item.date}</td>
+                                            <td><Moment>{item.date}</Moment></td>
                                             <td><button onClick={()=>{this.handleDelete(item)}}>X</button></td>
                                         </tr>
                                     );
@@ -91,14 +143,4 @@ class TransactionList extends React.Component{
 
 export default TransactionList
 
- {/* <ul className="nav nav-pills nav-stacked anyClass">
-                        {this.state.transactions.length > 0 && this.state.transactions.map(trans => {
-                            return (
-                                <div>
-                                    <li className="nav-item" key={trans._id}><Link onClick={() => {this.toggle(trans._id)}}>{trans.description}<br/>
-                                                                                        cost:{trans.amount}/-<br/>
-                                                                                        Date:{trans.date}</Link>
-                                    <button onClick={()=>{this.handleDelete(trans)}}>X</button></li><br/>
-                                </div>)
-                        })}
-                    </ul> */}
+ 

@@ -30,7 +30,7 @@ class Home extends React.Component{
             const income = response.data.income
             const expense = response.data.expense
             const balance = income - expense
-
+            // localStorage.getItem('userAuthToken')
             this.setState(() => ({
                 income,
                 expense,
@@ -81,16 +81,13 @@ class Home extends React.Component{
                 <div className="container">
                     <div className="row">
                         <div className="col-md-4">
-                            <h3><b>Income:</b>{this.state.income}</h3> 
-                        </div>
-                        <div className="col-md-3">
-                            <h3><b>Expense:</b>{this.state.expense}</h3>
+                            <h3><b>Income: </b> {this.state.income}</h3> 
                         </div>
                         <div className="col-md-4">
-                             <h3><b>Balance:</b>{this.state.balance}</h3>
+                            <h3><b>Expense: </b>{this.state.expense}</h3>
                         </div>
-                        <div className="col-md-1">
-                             <button onClick={this.handleClick}>add transaction</button>
+                        <div className="col-md-4">
+                             <h3><b>Balance: </b>{this.state.balance}</h3>
                         </div>
                      </div>   
                 </div>
@@ -101,8 +98,16 @@ class Home extends React.Component{
                     {this.state.isClick && <TransactionNew handleExpense={this.handleExpense}/>}
                 </div>
                
-
-                <h2><ul>Transactions Overview</ul></h2>
+                <div className="container">
+                    <div className="row">
+                        <div className="col-md-9">
+                            {!this.state.isClick && <h2><ul>Transactions Overview</ul></h2>}
+                        </div>
+                        <div className="col-md-3">
+                                {!this.state.isClick && <button onClick={this.handleClick}><h4>add transaction</h4></button>}
+                        </div>
+                    </div>
+                </div>
                 <hr></hr>
                 {!this.state.isClick && <TransactionList handleExpense={this.handleExpense} />}
 

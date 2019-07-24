@@ -7,7 +7,7 @@ router.get('/',authenticateUser,(req,res) => {
     const {user} = req
     Budget.find({
         user: user._id
-    })
+    }).populate('category',['name'])
       .then(Budget => {
             res.send(Budget)
         })
