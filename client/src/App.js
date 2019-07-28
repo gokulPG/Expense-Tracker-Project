@@ -37,11 +37,11 @@ class App extends React.Component{
                         <div className="col-md-10">
                             <h3>Welcome back!</h3><br/> 
                             <Link to="/users/home">Home</Link>
-                            <Link>  </Link>
+                            <Link>&nbsp;&nbsp;&nbsp;&nbsp;</Link>
                             <Link to="/users/budgetList">Budget</Link>
-                            <Link>    </Link>
+                            <Link>&nbsp;&nbsp;&nbsp;&nbsp;</Link>
                             <Link to="/users/reportList">Report</Link>
-                            <Link> </Link>
+                            <Link>&nbsp;&nbsp;&nbsp;&nbsp;</Link>
                             <Link to="/remind">Reminders</Link>
                     </div>
                     <div className="col-md-2" >
