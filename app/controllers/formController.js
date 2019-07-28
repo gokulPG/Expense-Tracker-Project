@@ -39,11 +39,12 @@ router.get('/budget', authenticateUser, (req,res) => {
     
     Budget.find({
         user: user._id
-    })
+    }).populate('category',['name'])
     .then(budgets => {
-            const arr = []
-            const promiseArr = []
-            const i = 1
+            let arr = []
+            let promiseArr = []
+            let budgetArr=[]
+            let i = 0
             function transactionFind(budget){
                return Transaction.find({
                             user:user._id,
@@ -53,28 +54,32 @@ router.get('/budget', authenticateUser, (req,res) => {
                     }
 
             budgets.forEach(function(budget){  
+                 budgetArr.push(budget)
                  promiseArr.push(transactionFind(budget)) 
             })
 
             Promise.all([...promiseArr])
                 .then(transactions => {
                     let expense = 0
-                  
-                    // while(i){
-                    //     transactions[i-1].forEach(function(transaction){
-                    //         expense = expense+ transaction.amount
-                    //     })
-                    //     ++i
-                    // }
-                    // var formData = {
-                    //     category: budget.category,
-                    //     amount: budget.amount,
-                    //     expense: expense,
-                    //     spent: budget.amount - expense
-                    // }
-                    // arr.push(formData) 
-                    // console.log('arr', arr)
-                    res.json(transactions)
+                    while(i < transactions.length){
+                        transactions[i].forEach(function(transaction){
+                            expense = expense+ transaction.amount
+                        })
+
+                      
+                        let formData = {
+                            category: budgetArr[i].category.name,
+                            amount: budgetArr[i].amount,
+                            expense: expense,
+                            spent: budgetArr[i].amount - expense
+                        }
+
+                    arr.push(formData) 
+                    expense = 0
+                    ++i
+                    }
+                    console.log('arr', arr)
+                    res.json(arr)
             })
        
         

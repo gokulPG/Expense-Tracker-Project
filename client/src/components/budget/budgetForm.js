@@ -53,10 +53,10 @@ class BudgetForm extends React.Component{
 
     render(){
         return(
-            <div className="d-flex justify-content-center">
+            <div className="d-flex justify-content-center bomborder centre">
                 
                 <form onSubmit={this.handleSubmit}>
-                        <h2><ul>Add Budget</ul></h2>
+                        <h2 id="center"><ul>Add Budget</ul></h2>
                         <hr></hr>
                         <div className="form-group">
                             <label>

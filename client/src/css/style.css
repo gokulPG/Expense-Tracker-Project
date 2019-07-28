@@ -21,20 +21,30 @@ body{
     color: black
   }
 
+/* .styler{
+  width: 55%;
+}
+.progress{
+  margin-bottom: 1rem;
+} */
 #center{
     text-align:center;
 }
   
+.bomborder {
+  border: 1px solid black
+}
+
 .anyClass {
   height:350px;
-  width: 700px; 
+  width: 900px; 
   overflow-y: scroll;
 }
 
 .centre{
   margin: auto;
-  width: 90%;
-  padding: 10px;
+  width: 100%;
+  padding: 30px;
 }
 
 .modal {

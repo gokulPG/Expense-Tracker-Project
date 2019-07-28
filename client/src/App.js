@@ -15,14 +15,13 @@ import Show from  './components/transaction/show'
 
 import BudgetNew from './components/budget/budgetNew'
 import BudgetList from './components/budget/budgetList'
+import ReportList from './components/report/reportList'
+
+import AddReminder from './components/transaction/addReminder'
+import Remind from './components/transaction/remind'
+import RemShow from './components/transaction/remShow'
 
 class App extends React.Component{
-    // constructor(props){
-    //     super(props)
-    //     this.state = {
-    //         isToken: false
-    //     }
-    // }
     render(){
         return(
         <BrowserRouter>
@@ -37,7 +36,13 @@ class App extends React.Component{
                     <div className="row">
                         <div className="col-md-10">
                             <h3>Welcome back!</h3><br/> 
+                            <Link to="/users/home">Home</Link>
+                            <Link>  </Link>
                             <Link to="/users/budgetList">Budget</Link>
+                            <Link>    </Link>
+                            <Link to="/users/reportList">Report</Link>
+                            <Link> </Link>
+                            <Link to="/remind">Reminders</Link>
                     </div>
                     <div className="col-md-2" >
                         <ul>
@@ -68,6 +73,12 @@ class App extends React.Component{
                         <Route path="/users/show/:id" component={Show} />
                         <Route path="/users/budgetNew" component={BudgetNew} exact={true} />
                         <Route path="/users/budgetList" component={BudgetList} />
+                        <Route path="/users/reportList" component={ReportList} />
+                        <Route path="/remind" component={Remind} exact={true}/>
+                        <Route path="/addreminder" component={AddReminder} exact={true}/>
+                        <Route path="/remShow/:id" component={RemShow} exact={true}/>
+                        <Route path="/notification" component={Notification}/>
+
                 </Switch>
                 </div>
             </div>

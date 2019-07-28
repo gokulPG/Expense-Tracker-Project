@@ -85,7 +85,7 @@ class TransactionForm extends React.Component{
 
     render(){
         return(
-            <div className="d-flex justify-content-center">
+            <div className="d-flex justify-content-center bomborder centre">
                 <form onSubmit={this.handleSubmit}>
                     <div className="form-group">        
                         <label>

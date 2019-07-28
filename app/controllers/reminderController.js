@@ -51,7 +51,7 @@ router.post('/', authenticateUser, (req,res) => {
 router.delete('/:id', authenticateUser, (req,res) => {
     const id = req.params.id
     const {user} = req
-    Debts.findByIdAndDelete({
+    Reminder.findOneAndDelete({
         _id:id,
         user:user._id
     })

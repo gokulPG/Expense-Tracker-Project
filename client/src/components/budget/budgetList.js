@@ -45,26 +45,44 @@ class BudgetList extends React.Component{
 
     render(){
         return(
-            <div id="center">
-                <div className="nav nav-pills nav-stacked anyClass">
+            <div id="center" className="bomborder">
+                <h2 id="center">BUDGET LIST</h2>
+                <div className="card centre nav nav-pills nav-stacked anyClass">
                     {
                         this.state.budgets.map((budget) => {
                             // return <li key={budget._id}>{budget.category}-{budget.amount}<button onClick={()=>{this.handleDelete(budget)}}>X</button></li>
-                            // <div className="card" style={{width:"500px"}}>
-                            //         <div className="card-body">
-                            //             <h4 id="center" className="card-title">
-                            //                 <div>
-                            //                     category:{budget.category}
-                            //                     amount:{budget.amount}
-                            //                     expense:{budget.expense}
-                            //                     spent:{budget.spent}
-                            //                 </div>
-                            //             </h4>
-                            //         </div>
-                            //  </div>
+                         return (
+                                <div>   
+                                        <div className="card bomborder" style={{width:"500px"}}>
+                                        <div className="card-body">
+                                            <h4 id="center" className="card-title">
+                                                <div >
+                                                    <h3>{budget.category}</h3><br/>
+                                                    Amount:- {budget.amount}
+                                                    <div className="progress">
+                                                        <div className="progress-bar" role="progressbar" style={{width: "100%"}} aria-valuenow={budget.amount} aria-valuemin="0" aria-valuemax={budget.amount}></div>
+                                                    </div><br/>
+                                                    Expense:- {budget.expense}
+                                                    <div className="progress">
+                                                        <div className="progress-bar" role="progressbar" style={{width: "25%"}} aria-valuenow="50" aria-valuemin="0" aria-valuemax="10000">{budget.expense}</div>
+                                                    </div><br/>
+                                                    Spent:- {budget.spent}
+                                                    <div className="progress">
+                                                        <div className="progress-bar" role="progressbar" style={{width: "50%"}} aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">{budget.spent}</div>
+                                                    </div><br/>
+                                                    {/* amount:{budget.amount}<br/>
+                                                    expense:{budget.expense}<br/>
+                                                    spent:{budget.spent}<br/> */}
+                                                </div>
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>    
+                            ) 
                             })
                     }
-                </div>    
+                </div>
+                <br/>    
                 <Link to='/users/budgetNew'>Add budget</Link><br/>
                 <Link to='/users/home'>Back</Link>
                 
