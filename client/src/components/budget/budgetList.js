@@ -60,15 +60,15 @@ class BudgetList extends React.Component{
                                                     <h3>{budget.category}</h3><br/>
                                                     Amount:- {budget.amount}
                                                     <div className="progress">
-                                                        <div className="progress-bar" role="progressbar" style={{width: "100%"}} aria-valuenow={budget.amount} aria-valuemin="0" aria-valuemax={budget.amount}></div>
+                                                        <div className="progress-bar" role="progressbar" style={{width:"100%"}} aria-valuenow={budget.amount} aria-valuemin="0" aria-valuemax={budget.amount}>{budget.amount}</div>
                                                     </div><br/>
                                                     Expense:- {budget.expense}
                                                     <div className="progress">
-                                                        <div className="progress-bar" role="progressbar" style={{width: "25%"}} aria-valuenow="50" aria-valuemin="0" aria-valuemax="10000">{budget.expense}</div>
+                                                        <div className="progress-bar" role="progressbar" style={{width: ((budget.expense*100)/budget.amount)+"%"}} aria-valuenow={budget.expense} aria-valuemin="0" aria-valuemax={budget.amount}>{budget.expense}</div>
                                                     </div><br/>
-                                                    Spent:- {budget.spent}
+                                                    Amount Left:- {budget.spent}
                                                     <div className="progress">
-                                                        <div className="progress-bar" role="progressbar" style={{width: "50%"}} aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">{budget.spent}</div>
+                                                        <div className="progress-bar" role="progressbar" style={{width: ((budget.spent*100)/budget.amount)+"%"}} aria-valuenow={budget.spent} aria-valuemin="0" aria-valuemax={budget.amount}>{budget.spent}</div>
                                                     </div><br/>
                                                     {/* amount:{budget.amount}<br/>
                                                     expense:{budget.expense}<br/>

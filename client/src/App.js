@@ -36,7 +36,7 @@ class App extends React.Component{
                     <div className="row">
                         <div className="col-md-10">
                             <h3>Welcome back!</h3><br/> 
-                            <Link to="/users/home">Home</Link>
+                            <i className="fa fa-home fa-2x" aria-hidden="true"></i><Link to="/users/home">Home</Link>
                             <Link>&nbsp;&nbsp;&nbsp;&nbsp;</Link>
                             <Link to="/users/budgetList">Budget</Link>
                             <Link>&nbsp;&nbsp;&nbsp;&nbsp;</Link>
