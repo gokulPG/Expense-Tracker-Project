@@ -101,7 +101,7 @@ class Home extends React.Component{
                 <div className="container">
                     <div className="row">
                         <div className="col-md-9">
-                            {!this.state.isClick && <h2><ul>Transactions Overview</ul></h2>}
+                            {!this.state.isClick && <h2><b>Transactions Overview</b></h2>}
                         </div>
                         <div className="col-md-3">
                                 {!this.state.isClick && <button onClick={this.handleClick}><h4>add transaction</h4></button>}

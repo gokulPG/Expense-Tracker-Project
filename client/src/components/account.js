@@ -28,6 +28,8 @@ class Account extends React.Component{
                     <div className="card-body">
                         <h4 id="center" className="card-title">
                             <div>
+                                <i class="fa fa-user-circle fa-3x" aria-hidden="true"></i>
+                                <hr></hr>
                                 Username: {this.props.user.username}<br/>
                                 <hr></hr>
                                 Email: {this.props.user.email}

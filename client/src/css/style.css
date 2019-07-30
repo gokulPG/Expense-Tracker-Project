@@ -6,7 +6,7 @@ body{
 
 #header{
     background:rgb(28, 85, 80);
-    color:#ffffff;
+    color:#5f9bcc5e;
     padding-top: 10px;
     margin-bottom: 15px;
   }
@@ -23,22 +23,24 @@ body{
     color: black
   }
 
-/* .styler{
-  width: 55%;
+.font{
+  font-size: 130%; 
 }
-.progress{
-  margin-bottom: 1rem;
-} */
+
 #center{
     text-align:center;
 }
-  
+ 
+.show{
+  padding-left: 50px;
+}
+
 .bomborder {
   border: 1px solid black
 }
 
 .anyClass {
-  height:350px;
+  height:400px;
   width: 900px; 
   overflow-y: scroll;
 }

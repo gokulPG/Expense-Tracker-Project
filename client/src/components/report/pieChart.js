@@ -9,7 +9,8 @@ class PieChart extends React.Component{
             let res={},category=""
         return (
            <div className="bomborder">
-               {
+                <h3>PIE-CHART<i class="fa fa-pie-chart" aria-hidden="true"></i></h3>
+                  {    
                    this.props.transactions.forEach((transaction) => {
                         category = transaction.category.name
                         if(res.hasOwnProperty(category)){

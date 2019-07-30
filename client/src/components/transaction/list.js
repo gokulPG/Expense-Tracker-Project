@@ -67,7 +67,7 @@ class TransactionList extends React.Component{
     render(){
         return(
 
-            <div className="card centre nav nav-pills nav-stacked anyClass">
+            <div className="card centre bomborder nav nav-pills nav-stacked anyClass">
                     {this.state.isItem && <TransactionShow item={this.state.item}/>}
 
                     <div>
@@ -128,7 +128,7 @@ class TransactionList extends React.Component{
                                             </td>
                                             <td>{item.amount}/-</td>
                                             <td><Moment>{item.date}</Moment></td>
-                                            <td><button onClick={()=>{this.handleDelete(item)}}>X</button></td>
+                                            <td><button onClick={()=>{this.handleDelete(item)}}><i class="fa fa-trash" aria-hidden="true"></i></button></td>
                                         </tr>
                                     );
                             })}

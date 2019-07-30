@@ -9,6 +9,7 @@ class BarChart extends React.Component{
             let mondayExpense=0, tuesdayExpense=0, wednesdayExpense=0, thursdayExpense=0, fridayExpense=0, saturdayExpense=0,sundayExpense=0 
             return(
                     <div className="bomborder">
+                            <h3>BAR-CHART <i class="fa fa-bar-chart" aria-hidden="true"></i></h3>
                             {
                                  this.props.transactions.forEach((transaction) => {
                                     let dt = moment(transaction.date, "YYYY-MM-DD HH:mm:ss")
